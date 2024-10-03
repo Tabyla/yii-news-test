@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  */
 
 namespace yii\queue\db\migrations;
@@ -22,14 +22,14 @@ class M211218163000JobQueueSize extends Migration
     public function up()
     {
         if ($this->db->driverName === 'mysql') {
-            $this->alterColumn('{{%queue}}', 'job', 'LONGBLOB NOT NULL');
+            $this->alterColumn($this->tableName, 'job', 'LONGBLOB NOT NULL');
         }
     }
 
     public function down()
     {
         if ($this->db->driverName === 'mysql') {
-            $this->alterColumn('{{%queue}}', 'job', $this->binary()->notNull());
+            $this->alterColumn($this->tableName, 'job', $this->binary()->notNull());
         }
     }
 }

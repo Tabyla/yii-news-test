@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  */
 
 namespace yii\queue\db;
@@ -14,13 +14,16 @@ use yii\db\Query;
 use yii\di\Instance;
 use yii\mutex\Mutex;
 use yii\queue\cli\Queue as CliQueue;
+use yii\queue\interfaces\StatisticsProviderInterface;
 
 /**
  * Db Queue.
  *
+ * @property-read StatisticsProvider $statisticsProvider
+ *
  * @author Roman Zhuravlev <zhuravljov@gmail.com>
  */
-class Queue extends CliQueue
+class Queue extends CliQueue implements StatisticsProviderInterface
 {
     /**
      * @var Connection|array|string
@@ -233,6 +236,8 @@ class Queue extends CliQueue
         }
     }
 
+    protected $reserveTime;
+
     /**
      * Moves expired messages into waiting list.
      */
@@ -243,11 +248,24 @@ class Queue extends CliQueue
             $this->db->createCommand()->update(
                 $this->tableName,
                 ['reserved_at' => null],
-                '[[reserved_at]] < :time - [[ttr]] and [[done_at]] is null',
+                // `reserved_at IS NOT NULL` forces db to use index on column,
+                // otherwise a full scan of the table will be performed
+                '[[reserved_at]] is not null and [[reserved_at]] < :time - [[ttr]] and [[done_at]] is null',
                 [':time' => $this->reserveTime]
             )->execute();
         }
     }
 
-    protected $reserveTime;
+    private $_statistcsProvider;
+
+    /**
+     * @return StatisticsProvider
+     */
+    public function getStatisticsProvider()
+    {
+        if (!$this->_statistcsProvider) {
+            $this->_statistcsProvider = new StatisticsProvider($this);
+        }
+        return $this->_statistcsProvider;
+    }
 }
