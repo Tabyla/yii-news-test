@@ -147,6 +147,13 @@ $bundle = BackendAsset::register($this);
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
                     [
+                        'label' => Yii::t('backend', 'News'),
+                        'icon' => '<i class="fas fa-newspaper" style="margin-right: 7px"></i>',
+                        'url' => ['/news/index'],
+                        'active' => (Yii::$app->controller->id === 'news'),
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+                    [
                         'label' => Yii::t('backend', 'System'),
                         'options' => ['class' => 'header'],
                     ],

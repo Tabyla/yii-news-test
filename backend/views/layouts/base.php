@@ -19,6 +19,7 @@ $this->params['body-class'] = $this->params['body-class'] ?? null;
     <head>
         <meta charset="<?php echo Yii::$app->charset ?>">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
         <?php echo Html::csrfMetaTags() ?>
         <title><?php echo Html::encode($this->title) ?></title>
