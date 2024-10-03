@@ -1,4 +1,4 @@
-# !Измените этот заголовок на название своего проекта
+# Yii2 news test
 
 ## Quickstart
 1. [Install docker](https://docs.docker.com/install/)
