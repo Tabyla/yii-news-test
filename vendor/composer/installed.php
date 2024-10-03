@@ -3,7 +3,7 @@
         'name' => 'trntv/yii2-starter-kit',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '322c14fa81886969ce995563d4c5ec85a0aeeaf6',
+        'reference' => 'd8fb626163534af46aec541a1032f88afa804a17',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1098,7 +1098,7 @@
         'trntv/yii2-starter-kit' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '322c14fa81886969ce995563d4c5ec85a0aeeaf6',
+            'reference' => 'd8fb626163534af46aec541a1032f88afa804a17',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

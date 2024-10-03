@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace frontend\controllers;
 
+use common\models\News;
 use yii\web\Controller;
 use yii\web\ErrorAction;
 
-/**
- * Site controller
- */
 class SiteController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
     public function actions(): array
     {
         return [
@@ -22,8 +19,12 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex(): string
     {
-        return $this->render('index');
+        $news = News::find()->orderBy(['created_at' => SORT_DESC])->all();
+
+        return $this->render('index', [
+            'news' => $news
+        ]);
     }
 }

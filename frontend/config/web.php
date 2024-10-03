@@ -15,6 +15,13 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error'
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '' => 'site/index',
+            ],
+        ],
         'maintenance' => [
             'class' => common\components\maintenance\Maintenance::class,
             'enabled' => function ($app) {

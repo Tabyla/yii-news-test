@@ -97,4 +97,12 @@ a.desc:after {
   padding: 10px 20px;
   margin: 0 0 15px 0;
 }
+
+.news{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
 /*# sourceMappingURL=style.map */
